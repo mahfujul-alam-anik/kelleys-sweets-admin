@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+  .flex-around {
+    @apply flex justify-around items-center;
+  }
+  .col-flex {
+    @apply flex flex-col;
+  }
+
+  .edit-btn {
+    @apply px-2 py-1 bg-yellow-400 hover:bg-yellow-500 rounded-md text-xs text-slate-800;
+  }
+  .delete-btn {
+    @apply px-2 py-1 bg-orange-600 hover:bg-orange-700 rounded-md text-xs text-slate-200;
+  }
+  .view-btn {
+    @apply px-2 py-1 bg-blue-600 hover:bg-blue-700 rounded-md text-xs text-slate-200;
+  }
+}
