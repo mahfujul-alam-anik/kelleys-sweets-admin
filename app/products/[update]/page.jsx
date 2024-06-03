@@ -41,7 +41,7 @@ const Page = ({ params }) => {
         console.log("Error getting product by id", err);
         toast.error(err?.response?.data.message);
       });
-  }, [id]);
+  }, [endpoint, id]);
 
   // handling changing input values
   const handleValueChange = (value, inputName) => {

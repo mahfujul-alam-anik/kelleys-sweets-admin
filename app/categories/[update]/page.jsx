@@ -35,7 +35,7 @@ const Page = ({ params }) => {
         console.log("Error getting category for edit.", err);
         toast.error("Error getting category for edit.");
       });
-  }, []);
+  }, [endpoint, id]);
 
   // handle edit action
   const handleEdit = (e) => {

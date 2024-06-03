@@ -28,8 +28,7 @@ const SignIn = () => {
         <div className=" w-full xl:w-4/12">
           <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
             <h2 className="mb-9 text-center text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
-              {" "}
-              Kelley's Sweets Admin Panel
+              {`Kelley's Sweets Admin Panel`}
             </h2>
 
             <form onSubmit={handleSignin}>

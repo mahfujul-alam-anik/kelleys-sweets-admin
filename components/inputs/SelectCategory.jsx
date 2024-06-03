@@ -18,7 +18,7 @@ const SelectCategory = ({ value, setValue, required, label, id }) => {
         console.log("Error getting categories: ", err);
         toast.error("Error getting categories.");
       });
-  }, []);
+  }, [endpoint]);
 
   return (
     <div className="flex flex-col gap-2">

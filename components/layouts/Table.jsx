@@ -26,8 +26,12 @@ const Table = ({ columns, data }) => {
 
   return (
     <div className="mt-5 bg-slate-50 rounded-md p-8 w-full">
-      <table {...getTableProps()} className="table w-full">
-        <thead>
+      <table
+        {...getTableProps()}
+        className="table w-full"
+        key={Math.random(9, 99999)}
+      >
+        <thead key={Math.random(9, 99999)}>
           {headerGroups.map((headerGroup) => (
             <tr
               key={Math.random(9, 99999)}

@@ -37,7 +37,7 @@ const Page = () => {
         console.log("Error getting settings", err);
         toast.error(err?.response?.data.message);
       });
-  }, []);
+  }, [endpoint]);
 
   // handling changing input values
   const handleValueChange = (value, inputName) => {

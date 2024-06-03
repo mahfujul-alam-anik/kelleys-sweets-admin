@@ -5,13 +5,36 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import Table from "@/components/layouts/Table";
 import Breadcrumb from "@/components/ui/Breadcrumb";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import Image from "next/image";
 
 const Page = () => {
   const endpoint = process.env.NEXT_PUBLIC_API_ROUTE + "product/all";
   const [rows, setRows] = useState([]);
+
+  // Handle delete action
+  const handleDelete = useCallback(
+    (id) => {
+      const confirmed = confirm(
+        "Are you sure you want to delete this product?"
+      );
+
+      if (confirmed) {
+        axios
+          .delete(endpoint, { params: { id } })
+          .then((res) => {
+            setRows(res?.data?.products.reverse());
+            toast.success(res?.data?.message);
+          })
+          .catch((err) => {
+            console.log("Error deleting products: ", err);
+            toast.error("Not deleted, something went wrong.");
+          });
+      }
+    },
+    [endpoint]
+  );
 
   const columns = useMemo(
     () => [
@@ -73,7 +96,7 @@ const Page = () => {
         ),
       },
     ],
-    []
+    [handleDelete]
   );
 
   // fetch the table data
@@ -87,25 +110,7 @@ const Page = () => {
         console.log("Error getting products: ", err);
         toast.error("Error getting products.");
       });
-  }, []);
-
-  // Handle delete action
-  const handleDelete = (id) => {
-    const confirmed = confirm("Are you sure you want to delete this product?");
-
-    if (confirmed) {
-      axios
-        .delete(endpoint, { params: { id } })
-        .then((res) => {
-          setRows(res?.data?.products.reverse());
-          toast.success(res?.data?.message);
-        })
-        .catch((err) => {
-          console.log("Error deleting products: ", err);
-          toast.error("Not deleted, something went wrong.");
-        });
-    }
-  };
+  }, [endpoint]);
 
   return (
     <DefaultLayout>

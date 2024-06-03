@@ -30,7 +30,7 @@ const Page = ({ params }) => {
         console.log("Error getting order by id", err);
         toast.error("Error getting order by id.");
       });
-  }, [id]);
+  }, [endpoint, id]);
 
   // update the order
   const handleSubmit = () => {
